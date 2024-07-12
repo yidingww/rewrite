@@ -3294,9 +3294,11 @@ describe("ConfigArray", () => {
 
 		describe("push()", () => {
 			it("should throw an error when normalized", () => {
+				// Note: In Node.js the error message contains the word "extensible"
+				// In Bun the error message contains the word "readonly"
 				assert.throws(() => {
 					configs.push({});
-				}, /extensible/u);
+				}, /extensible|readonly/u);
 			});
 		});
 	});
